@@ -17,7 +17,7 @@
 
     <!-- 課題ページ -->
     <div id="tasksPage">
-        <select id="taskSelect" onchange="toggleOtherInput(); resetOtherTaskInput();">
+        <select id="taskSelect" onchange="toggleOtherInput()">
             <option value="">課題を選択</option>
             <option value="数学">数学</option>
             <option value="国語">国語</option>
@@ -49,7 +49,8 @@
             <button id="nextMonth" onclick="changeMonth(1)">次月 ＞</button>
         </div>
 
-        <h2 class="calendar-header" id="currentMonth"></h2>
+        <!-- カレンダー表示 -->
+        <h2 class="calendar-header" id="currentMonthText"></h2>
         <div id="calendar"></div>
     </div>
 
