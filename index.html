@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課題管理アプリ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>課題管理</h1>
+
+    <div class="menu">
+        <div class="tab active" onclick="showPage('tasks')">課題</div>
+        <div class="tab" onclick="showPage('calendar')">カレンダー</div>
+    </div>
+
+    <div id="tasksPage">
+        <select id="taskSelect" onchange="toggleOtherInput()">
+            <option value="">課題を選択</option>
+            <option value="数学">数学</option>
+            <option value="国語">国語</option>
+            <option value="英語">英語</option>
+            <option value="物理">物理</option>
+            <option value="倫理">倫理</option>
+            <option value="情報">情報</option>
+            <option value="レポート">レポート</option>
+            <option value="電気回路">電気回路</option>
+            <option value="その他">その他</option>
+        </select>
+        <input type="text" id="otherTaskInput" placeholder="その他の課題を入力" style="display: none;">
+        <input type="date" id="dueDateInput">
+        <button onclick="addTask()">追加</button>
+
+        <h2>現在の残り課題</h2>
+        <ul id="activeTaskList"></ul>
+
+        <h2>期限切れの課題</h2>
+        <ul id="expiredTaskList"></ul>
+    </div>
+
+    <div id="calendarPage" style="display: none;">
+        <h2 class="calendar-header" id="currentMonth"></h2>
+        <div id="calendar"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
