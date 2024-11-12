@@ -1,110 +1,51 @@
-/* 基本設定 */
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
   background-image: url('haikei.2.jpg');
-  background-size: cover;
-  background-position: center;
 }
-
 ul {
   list-style-type: none;
   padding: 0;
 }
-
 li {
   margin: 5px 0;
   padding: 5px;
   border-radius: 5px;
 }
-
-/* タスクアイテム */
 .task-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+   background-color: white;
 }
-
 .warning {
   background-color: yellow;
 }
-
 .danger {
   background-color: red;
   color: white;
 }
-
 .expired {
   opacity: 0.5; /* 期限切れタスク表示 */
   background-color: black;
   color: white;
 }
-
-/* カレンダー部分のスタイル */
-#calendarPage {
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
-
-#calendarHeader {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-#calendarHeader button {
-  padding: 5px 10px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-#calendarHeader #currentMonth {
-  font-size: 18px;
-  font-weight: bold;
-}
-
 table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
-  margin-top: 10px;
+  margin: 20px 0;
 }
-
 th, td {
-  width: 14.28%; /* 7列のために横幅を調整 */
+  border: 1px solid #ccc;
   padding: 10px;
   text-align: center;
-  border: 1px solid #ddd;
 }
-
 th {
-  background-color: #f4f4f4;
+  background-color: #f2f2f2;
 }
-
-td {
-  height: 40px;
-}
-
-td.task-list-item {
-  color: red;
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-td ul {
-  padding-left: 0;
-  margin-top: 5px;
-}
-
-#calendarHeader button:hover {
-  background-color: #ddd;
-}
-
-/* タブとメニュー部分 */
 .menu {
   margin-bottom: 20px;
 }
-
 .tab {
   display: inline-block;
   margin-right: 10px;
@@ -113,20 +54,15 @@ td ul {
   cursor: pointer;
   background-color: #f9f9f9;
 }
-
 .tab.active {
   background-color: #e9e9e9;
   font-weight: bold;
 }
-
-/* カレンダーの月タイトル */
 .calendar-header {
   text-align: center;
   margin: 20px 0;
   font-size: 1.5em;
 }
-
-/* その他のタスクリストアイテム */
 .task-list-item {
   color: red; /* 課題リストを赤くする */
 }
