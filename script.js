@@ -9,7 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCalendar();
 });
 
-// 月を変更する
+// ページ切り替え
+function showPage(page) {
+    document.getElementById('tasksPage').style.display = page === 'tasks' ? 'block' : 'none';
+    document.getElementById('calendarPage').style.display = page === 'calendar' ? 'block' : 'none';
+
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    document.querySelector(`.tab[onclick="showPage('${page}')"]`).classList.add('active');
+}
+
+// 月を変更する関数
 function changeMonth(offset) {
     currentMonth += offset;
     if (currentMonth < 0) {
@@ -19,16 +30,16 @@ function changeMonth(offset) {
         currentMonth = 0;
         currentYear++;
     }
-    renderCalendar(); // カレンダーを再描画
+    renderCalendar();
 }
 
-// カレンダーの描画
-function renderCalendar(tasks = []) {
+// カレンダーを表示する関数
+function renderCalendar() {
     const calendarContainer = document.getElementById('calendar');
     calendarContainer.innerHTML = ""; // クリア
 
     const monthNames = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
-    const currentMonthHeader = document.getElementById('currentMonth');
+    const currentMonthHeader = document.getElementById('currentMonthText');
     currentMonthHeader.textContent = `${currentYear}年 ${monthNames[currentMonth]}`;
 
     const firstDay = new Date(currentYear, currentMonth, 1);
@@ -59,13 +70,12 @@ function renderCalendar(tasks = []) {
         cell.textContent = day;
 
         const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        const tasksForDate = tasks.filter(task => task.dueDate === dateStr);
+        const tasksForDate = getTasksForDate(dateStr);
         if (tasksForDate.length > 0) {
             const taskList = document.createElement('ul');
             taskList.style.padding = '0'; // パディングをリセット
             tasksForDate.forEach(task => {
                 const taskItem = document.createElement('li');
-                taskItem.classList.add('task-list-item');
                 taskItem.textContent = task.text;
                 taskList.appendChild(taskItem);
             });
@@ -84,4 +94,10 @@ function renderCalendar(tasks = []) {
     }
     table.appendChild(row);
     calendarContainer.appendChild(table);
+}
+
+// 期限に対応する課題を取得
+function getTasksForDate(dateStr) {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    return tasks.filter(task => task.dueDate === dateStr);
 }
