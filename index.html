@@ -12,6 +12,7 @@
     <div class="menu">
         <div class="tab active" onclick="showPage('tasks')">課題</div>
         <div class="tab" onclick="showPage('calendar')">カレンダー</div>
+        <div class="tab" onclick="showPage('deleted')">ゴミ箱</div>
     </div>
 
     <div id="tasksPage">
@@ -39,10 +40,37 @@
     </div>
 
     <div id="calendarPage" style="display: none;">
-        <h2 class="calendar-header" id="currentMonth"></h2>
+        <div class="calendar-header">
+            <button id="prevMonthBtn" onclick="changeMonth(-1)">◀</button>
+            <h2 id="currentMonth"></h2>
+            <button id="nextMonthBtn" onclick="changeMonth(1)">▶</button>
+        </div>
         <div id="calendar"></div>
     </div>
+    
+    <!-- 編集フォーム (非表示) -->
+    <div id="editForm" style="display: none;">
+        <form>
+            <label for="editTaskText">タスク:</label>
+            <input type="text" id="editTaskText" required>
+
+            <label for="editDueDate">締切日:</label>
+            <input type="date" id="editDueDate" required>
+
+            <button type="submit">更新</button>
+        </form>
+    </div>
+
+    
+    <div id="deletedPage" style="display: none;">
+        <h2>ゴミ箱</h2>
+        <ul id="deletedTaskList"></ul> <!-- 削除されたタスクをここに表示 -->
+    </div>
+
+    <div id="background"></div>
+
 
     <script src="script.js"></script>
+    <script src="script_haikei.js"></script>
 </body>
 </html>
